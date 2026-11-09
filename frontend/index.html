@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Локальный доступ к Qwen через подписку STK." />
+    <title>AI Token Access</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <a class="brand" href="#top" aria-label="AI Token Access">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>AI Token Access</span>
+        </a>
+        <div class="hero-actions">
+          <span id="network-status" class="network-status is-pending">Проверка сети…</span>
+          <button id="connect-button" class="button button-primary">Подключить кошелёк</button>
+        </div>
+        <div class="hero-copy" id="top">
+          <p class="eyebrow">Локальная тестовая сеть</p>
+          <h1>Доступ к искусственному интеллекту<br />с помощью блокчейн-токенов.</h1>
+          <p>Оплачивайте время доступа тестовыми STK и общайтесь с локальной Qwen через Ollama.</p>
+        </div>
+      </header>
+
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+      <section id="wallet-picker" class="wallet-picker" aria-labelledby="wallet-picker-title" hidden>
+        <div>
+          <p class="eyebrow">Выбор кошелька</p>
+          <h2 id="wallet-picker-title">Подключить Trust Wallet</h2>
+          <p>Выберите Trust Wallet. Другие расширения не будут подключены автоматически.</p>
+        </div>
+        <div id="wallet-options" class="wallet-options"></div>
+      </section>
+
+      <section class="wallet-panel" aria-labelledby="wallet-title">
+        <div>
+          <p class="eyebrow">Кошелёк</p>
+          <h2 id="wallet-title">Подключение не выполнено</h2>
+          <p id="wallet-detail">Подключите тестовый аккаунт Trust Wallet для просмотра баланса и покупки подписки.</p>
+        </div>
+        <dl class="wallet-data">
+          <div><dt>Сеть</dt><dd id="network-name">—</dd></div>
+          <div><dt>Chain ID</dt><dd id="chain-id">—</dd></div>
+          <div><dt>Баланс</dt><dd id="stk-balance">—</dd></div>
+          <div><dt>Авторизация</dt><dd id="auth-status">Не авторизован</dd></div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="subscription-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">Доступ</p><h2 id="subscription-title">Статус подписки</h2></div>
+          <span id="subscription-state" class="state-badge is-inactive">Нет доступа</span>
+        </div>
+        <div class="subscription-card">
+          <div><strong id="expiration">Подписка не активна</strong><p id="remaining-time">Выберите тариф, чтобы открыть ИИ-чат.</p></div>
+          <button id="renew-button" class="button button-secondary" disabled>Продлить подписку</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="plans-title">
+        <div class="section-heading"><div><p class="eyebrow">Тарифы</p><h2 id="plans-title">Выберите период доступа</h2></div></div>
+        <div id="plans" class="plans-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="chat-section" aria-labelledby="chat-title">
+        <div class="section-heading"><div><p class="eyebrow">Qwen через Ollama</p><h2 id="chat-title">ИИ-чат</h2></div><span id="chat-access" class="state-badge is-inactive">Нужна подписка</span></div>
+        <div id="messages" class="messages" aria-live="polite"><p class="empty-chat">Ответы Qwen появятся здесь после активной подписки.</p></div>
+        <form id="chat-form" class="chat-form">
+          <label class="sr-only" for="chat-input">Ваш вопрос</label>
+          <textarea id="chat-input" maxlength="2000" placeholder="Задайте вопрос Qwen…" disabled></textarea>
+          <button id="chat-submit" class="button button-primary" type="submit" disabled>Отправить</button>
+        </form>
+        <p class="input-help"><span id="character-count">0</span>/2000 символов · история хранится только в этой вкладке.</p>
+      </section>
+
+      <section class="about" aria-labelledby="about-title">
+        <p class="eyebrow">О проекте</p><h2 id="about-title">Простой доступ без реальных денег</h2>
+        <div class="about-grid">
+          <p><strong>STK</strong> — учебный ERC‑20 токен. Он оплачивает срок доступа, а не ответы поштучно.</p>
+          <p><strong>Блокчейн</strong> хранит дату окончания; FastAPI проверяет её перед каждым запросом к модели.</p>
+          <p><strong>Тестовая среда</strong> использует только локальные Hardhat ETH и STK. Реальные активы не нужны.</p>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

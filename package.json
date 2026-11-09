@@ -1,0 +1,38 @@
+{
+  "name": "ai-token-access",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Учебный проект гибридной платформы доступа к ИИ через ERC-20 подписки.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0",
+    "npm": ">=11.3.0"
+  },
+  "scripts": {
+    "preinstall": "npm run check:node",
+    "check:node": "node scripts/check-node-version.mjs",
+    "compile": "npm run check:node && hardhat compile",
+    "test": "npm run check:node && hardhat test",
+    "node": "npm run check:node && hardhat node",
+    "ignition:deploy": "npm run check:node && hardhat ignition deploy",
+    "local:deploy": "npm run compile && hardhat ignition deploy ignition/modules/AIServiceAccess.ts --network local --parameters ignition/parameters/local.json && npm run local:export",
+    "local:verify": "node scripts/verify-local-deployment.mjs",
+    "local:export": "node scripts/export-ignition-local-config.mjs",
+    "local:export-addresses": "node scripts/export-local-config.mjs",
+    "local:fund-eth": "node scripts/fund-local-eth.mjs",
+    "local:fund-stk": "node scripts/fund-local-stk.mjs",
+    "local:demo": "node scripts/demo-local.mjs",
+    "local:purchase": "node scripts/purchase-local.mjs"
+    ,"test:integration": "node scripts/integration-local.mjs"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "5.0.7",
+    "@types/node": "^22.0.0",
+    "hardhat": "3.21.2",
+    "typescript": "^5.0.0",
+    "viem": "^2.47.6"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.6.1"
+  }
+}

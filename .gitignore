@@ -1,0 +1,17 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+shared/local-contracts.json
+ignition/deployments/
+typechain-types/
+dist/
+__pycache__/
+.pytest_cache/
+.venv/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
